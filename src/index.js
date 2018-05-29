@@ -16,8 +16,5 @@ request('/auth/token')
 
 window.AuthenticationService = AuthenticationService
 
-
-
-
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
