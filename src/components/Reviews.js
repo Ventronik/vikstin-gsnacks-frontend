@@ -1,20 +1,32 @@
 import React from 'react'
 
+
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { getReviews } from '../actions/auth.actions'
 import Review from './Review'
 
-const Reviews = ({ reviews, refreshData}) => {
-  console.log(reviews.data)
-  const { data } = reviews
-  console.log(data)
+class Reviews extends React.Component {
+  componentDidMount() {
+    this.props.getReviews()
+  };
 
-  return (
-    <div>
-      {
-        reviews.map(review => <Review key={review.id} review={review.text} refreshData={refreshData}/>)
-      }
-    </div>
-
-  )
+  render () {
+    const reviews = this.props.reviews;
+    console.log(reviews)
+    return (
+      <div>
+        {
+          reviews.map(review => <Review key={review.id} review={review}/>)
+        }
+      </div>
+    )
+  }
 }
 
-export default Reviews
+//refreshData={refreshData}
+
+const mapStateToProps = state => ({user: state.auth.user, reviews: state.auth.reviews})
+const mapDispatchToProps = dispatch => ({getReviews: bindActionCreators(getReviews, dispatch)})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reviews)

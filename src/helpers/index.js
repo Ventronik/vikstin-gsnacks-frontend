@@ -1,11 +1,3 @@
-import AuthService from './AuthenticationService'
-import AuthRoute from './AuthenticatedRoute'
-import withAuth from './withAuthentication'
-import req from './request'
+import request from './request';
 
-
-export const AuthenticationService = AuthService
-export const AuthenticatedRoute = AuthRoute
-export const withAuthentication = withAuth
-export const request = req
-// export default { request, AuthenticationService, AuthenticatedRoute, withAuthentication }
+export default { request };
