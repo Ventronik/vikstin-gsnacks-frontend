@@ -11,18 +11,21 @@ class App extends Component {
       reviews: [],
       loading: false
     }
+    const { REACT_APP_BACKEND } = process.env
+    console.log(REACT_APP_BACKEND)
   }
 
-  getData = () => {
+  componentDidMount(){
     request('/api/reviews')
     .then((allReviews) => {
       this.setState({
-        reviews: allReviews
+        reviews: allReviews.data
       })
     })
   }
 
   render() {
+    console.log(this.state.reviews)
     return (
       <BrowserRouter>
         <div>
@@ -30,7 +33,7 @@ class App extends Component {
           </div>
           <p>'HAMBRUGARZ'</p>
           <Switch>
-            <Route path='/reviews' component={Reviews} reviews={this.state.reviews} refreshData={this.getData} />
+            <Route path='/reviews' render={()=> <Reviews reviews={this.state.reviews} refreshData={this.getData} />} />
           </Switch>
         </div>
       </BrowserRouter>
