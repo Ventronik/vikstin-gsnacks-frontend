@@ -9,10 +9,10 @@ import { request, AuthenticationService } from './helpers/index'
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css'
 
-request('/auth/token')
-.then((response)=>{
-  AuthenticationService.setAuthState(response.data)
-})
+// request('/auth/token')
+// .then((response)=>{
+//   AuthenticationService.setAuthState(response.data)
+// })
 
 window.AuthenticationService = AuthenticationService
 
