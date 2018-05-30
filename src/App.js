@@ -6,6 +6,7 @@ import Login from './components/Login';
 import TopNav from './components/TopNav';
 import Signup from './components/Signup';
 import UserProfile from './components/UserProfile';
+import Reviews from './components/Reviews';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/profile" component={UserProfile} />
+          <Route path='/reviews' component={Reviews} />
         </Switch>
       </BrowserRouter>
     </div>

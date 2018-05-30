@@ -6,7 +6,8 @@ import {
   USER_SIGNUP_SUCCESS,
   USER_SIGNUP_FAILED,
   USER_LOGOUT,
-  GET_SNACKS
+  GET_SNACKS,
+  GET_REVIEWS
 } from '../actions/auth.actions';
 
 let initialState = {
@@ -14,7 +15,8 @@ let initialState = {
   user: {},
   showLoginError: false,
   showSignupError: false,
-  snacks: []
+  snacks: [],
+  reviews: []
 };
 
 export default (state = initialState, action) => {
@@ -35,6 +37,8 @@ export default (state = initialState, action) => {
       return {...state, user: {}};
     case GET_SNACKS:
       return {...state, snacks: action.payload};
+    case GET_REVIEWS:
+      return {...state, reviews: action.payload}
     default:
       return state;
   }
