@@ -19,13 +19,13 @@ export const deleteReview = (id) => (
   dispatch => {
     request(`/api/reviews/${id}`, 'delete')
     .then(response => {
+      return request('/api/reviews');
+    })
+    .then(response => {
       dispatch({
         type: DELETE_REVIEW,
         payload: response.data.data
       });
-    })
-    .then(response => {
-      getReviews();
-    })
+    });
   }
 );
