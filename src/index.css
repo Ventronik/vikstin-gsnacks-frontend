@@ -7,6 +7,15 @@ body {
   padding: 15px;
 }
 
+.snack-card {
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.snack-card:hover {
+  transform: scale(1.02);
+}
+
 .snack-img {
   height: 200px;
   object-fit: cover;

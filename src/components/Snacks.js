@@ -14,7 +14,6 @@ class Snacks extends React.Component {
   };
 
   render () {
-    console.log(this.props);
     return (
       <div>
         <Container>
@@ -24,6 +23,7 @@ class Snacks extends React.Component {
                 return (
                   <Snack
                     key={snack.id}
+                    id={snack.id}
                     name={snack.name}
                     description={snack.description}
                     price={snack.price}
@@ -38,7 +38,7 @@ class Snacks extends React.Component {
       </div>
     );
   };
-}
+};
 
 const mapStateToProps = state => ({
   user: state.auth.user,
