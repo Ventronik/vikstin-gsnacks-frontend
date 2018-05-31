@@ -6,6 +6,7 @@ import Login from './components/Login';
 import TopNav from './components/TopNav';
 import Signup from './components/Signup';
 import Snacks from './components/Snacks';
+import Reviews from './components/Reviews';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/snacks" component={Snacks} />
+          <Route path='/reviews' component={Reviews} />
         </Switch>
       </BrowserRouter>
     </div>
