@@ -1,27 +1,26 @@
-import React from 'react'
+import React from 'react';
 
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem
-} from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { userLogout } from '../actions/auth'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getUser, userLogout } from '../actions/auth';
 
 class TopNav extends React.Component {
-  render() {
+  componentDidMount () {
+    this.props.getUser();
+  };
+
+  render () {
     return (
       <div>
         <Navbar color="primary" dark expand="md">
           <NavbarBrand href="/">Vikstin Federal Penitentiary</NavbarBrand>
-            {this.props.user.name ?
+            {this.props.user.id ?
               (
                 <Nav className="ml-auto" navbar>
                   <NavItem>
-                    <a href="/" className="nav-link" onClick={() => this.props.logout()}>Log Out</a>
+                    <a href="/" className="nav-link" onClick={() => this.props.userLogout()}>Log Out</a>
                   </NavItem>
                 </Nav>
               ) : (
@@ -37,11 +36,12 @@ class TopNav extends React.Component {
             }
         </Navbar>
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
-const mapStateToProps = state => ({user: state.auth.user})
-const mapDispatchToProps = dispatch => ({logout: bindActionCreators(userLogout, dispatch)})
+const mapStateToProps = state => ({user: state.auth.user});
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopNav)
+const mapDispatchToProps = dispatch => bindActionCreators({ getUser, userLogout }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopNav);

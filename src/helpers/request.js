@@ -13,7 +13,7 @@ const request = (path, method = 'get', body = null) => {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      // 'Authorization': bearerToken
+      'Authorization': bearerToken
     },
     data: body
   });

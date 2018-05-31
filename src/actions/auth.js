@@ -8,6 +8,8 @@ export const USER_SIGNUP_PENDING = 'USER_SIGNUP_PENDING';
 export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
 export const USER_SIGNUP_FAILED = 'USER_SIGNUP_FAILED';
 
+export const GET_USER = 'GET_USER';
+
 export const USER_LOGOUT = 'USER_LOGOUT';
 
 export const userLogin = ({email, password}, history) => (
@@ -16,11 +18,14 @@ export const userLogin = ({email, password}, history) => (
     request('/auth/token', 'post', {email, password})
     .then(response => {
       localStorage.setItem('token', response.data.token);
+      return request('/auth/token');
+    })
+    .then(response => {
       dispatch({
         type: USER_LOGIN_SUCCESS,
-        payload: response
+        payload: response.data
       });
-      history.push('/settings');
+      history.push('/snacks');
     })
     .catch(error => {
       dispatch({
@@ -35,11 +40,11 @@ export const userLogin = ({email, password}, history) => (
 export const userSignup = (newUser, history) => (
   dispatch => {
     dispatch({type: USER_SIGNUP_PENDING});
-    request('/shops', 'post', {newUser})
+    request('/api', 'post', {newUser})
     .then(response => {
       dispatch({
         type: USER_SIGNUP_SUCCESS,
-        payload: response
+        payload: response.data
       });
       history.push('/login');
     })
@@ -52,8 +57,21 @@ export const userSignup = (newUser, history) => (
   }
 );
 
+export const getUser = () => (
+  dispatch => {
+    request('/auth/token')
+    .then(response => {
+      dispatch({
+        type: GET_USER,
+        payload: response.data
+      });
+    });
+  }
+);
+
 export const userLogout = () => (
   dispatch => {
+    localStorage.removeItem('token');
     dispatch({type: USER_LOGOUT});
   }
 );

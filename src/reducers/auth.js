@@ -5,6 +5,7 @@ import {
   USER_SIGNUP_PENDING,
   USER_SIGNUP_SUCCESS,
   USER_SIGNUP_FAILED,
+  GET_USER,
   USER_LOGOUT
 } from '../actions/auth';
 
@@ -29,6 +30,8 @@ export default (state = initialState, action) => {
       return {...state, isLoading: false};
     case USER_SIGNUP_FAILED:
       return {...state, isLoading: false, showSignupError: true};
+    case GET_USER:
+      return {...state, isLoading: false, user: action.payload};
     case USER_LOGOUT:
       return {...state, user: {}};
     default:
