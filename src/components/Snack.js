@@ -23,14 +23,16 @@ class Snack extends React.Component {
           <CardImg className="snack-img" top width="100%" src={this.props.img} alt={this.props.name} />
           <CardBody>
             <CardTitle>{this.props.name}</CardTitle>
-            <CardSubtitle>{this.props.price}</CardSubtitle>
+            <CardSubtitle>{this.props.price} Credits</CardSubtitle>
             <CardText>{this.props.description.slice(0,50)}...</CardText>
           </CardBody>
         </Card>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>{this.props.name}</ModalHeader>
           <ModalBody>
-            {this.props.description}
+            <img className="modal-img" src={this.props.img} alt={this.props.name} />
+            <small>{this.props.price} Credits</small>
+            <p>{this.props.description}</p>
           </ModalBody>
         </Modal>
       </Col>

@@ -1,47 +1,34 @@
-import React, { Component } from 'react'
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Container,
-  Row,
-  Col,
-  Alert,
-  Input
-} from 'reactstrap'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { userSignup } from '../actions/auth'
+import React, { Component } from 'react';
+import { Button, Form, FormGroup, Container, Row, Col, Alert, Input } from 'reactstrap';
 
-export class Signup extends Component {
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { userSignup } from '../actions/auth';
+
+class Signup extends Component {
   state = {
-    isValid: true,
-    passwordClasses: 'form-control',
-    name: '',
+    invalid: false,
+    first_name: '',
+    last_name: '',
     email: '',
-    company: '',
-    phone: '',
-    address: '',
     password: '',
     verify_password: ''
-  }
-  userSignup = e => {
-    e.preventDefault()
-    let { name, email, company, phone, password, verify_password, address } = this.state
+  };
+
+  userSignup = event => {
+    event.preventDefault();
+    let { first_name, last_name, email, password, verify_password } = this.state;
     if (!password || password !== verify_password || !verify_password) {
       this.setState({
-        passwordClasses: this.state.passwordClasses + ' is-invalid',
-        isValid: false
-      })
+        invalid: true
+      });
     } else {
-      let newUser = {name, email, company, phone, password, address}
-      console.log('newUser', newUser)
-      this.props.userSignup(newUser, this.props.history)
+      let newUser = {first_name, last_name, email, password};
+      this.props.userSignup(newUser, this.props.history);
     }
-  }
+  };
 
-  render() {
+  render () {
     return (
       <Container className="main-wrapper">
         <Row style={{ marginTop: '10vh', marginBottom: '10vh' }}>
@@ -55,99 +42,60 @@ export class Signup extends Component {
           >
             <Form onSubmit={this.userSignup}>
               <FormGroup>
-                <Label for="name">Name</Label>
                 <Input
                   type="text"
-                  name="name"
-                  id="name-field"
-                  placeholder="name"
-                  value={this.state.name}
-                  onChange={e =>
-                    this.setState({ name: e.target.value })
-                  }
+                  name="first_name"
+                  id="first_name"
+                  placeholder="First Name"
+                  value={this.state.first_name}
+                  onChange={event => this.setState({ first_name: event.target.value })}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="email">Email</Label>
+                <Input
+                  type="text"
+                  name="last_name"
+                  id="last_name"
+                  placeholder="Last Name"
+                  value={this.state.last_name}
+                  onChange={event => this.setState({ last_name: event.target.value })}
+                />
+              </FormGroup>
+              <FormGroup>
                 <Input
                   type="email"
                   name="email"
-                  id="email-field"
-                  placeholder="email"
+                  id="email"
+                  placeholder="Email"
                   value={this.state.email}
-                  onChange={e =>
-                    this.setState({ email: e.target.value })
-                  }
-                />
-              </FormGroup>
-               <FormGroup>
-                <Label for="company">Company</Label>
-                <Input
-                  type="text"
-                  name="company"
-                  id="company-field"
-                  placeholder="company"
-                  value={this.state.company}
-                  onChange={e =>
-                    this.setState({ company: e.target.value })
-                  }
+                  onChange={event => this.setState({ email: event.target.value })}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="name">Phone</Label>
-                <Input
-                  type="text"
-                  name="phone"
-                  id="phone-field"
-                  placeholder="phone"
-                  value={this.state.phone}
-                  onChange={e =>
-                    this.setState({ phone: e.target.value })
-                  }
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="address">Address</Label>
-                <Input
-                  type="text"
-                  name="address"
-                  id="address-field"
-                  placeholder="address"
-                  value={this.state.address}
-                  onChange={e =>
-                    this.setState({ address: e.target.value })
-                  }
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="password">Password</Label>
                 <Input
                   type="password"
                   name="password"
-                  id="password-field"
-                  placeholder="password"
+                  id="password"
+                  placeholder="Password"
                   value={this.state.password}
-                  onChange={e =>
-                    this.setState({ password: e.target.value })
-                  }
+                  onChange={event => this.setState({ password: event.target.value })}
+                  invalid={this.state.invalid}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="verify_password">Verify Password</Label>
                 <Input
                   type="password"
                   name="password"
                   id="verify_password"
-                  placeholder="password"
+                  placeholder="Verify Password"
                   value={this.state.verify_password}
-                  onChange={e =>
-                    this.setState({ verify_password: e.target.value })
-                  }
+                  onChange={event => this.setState({ verify_password: event.target.value })}
+                  invalid={this.state.invalid}
                 />
-                {!this.state.isValid ? (
-                  <Alert color="danger">Passwords do not match</Alert>
-                ) : null}
               </FormGroup>
+              {this.state.invalid ? (
+                <Alert className="alert" color="danger">Please fill out all fields correctly.</Alert>
+              ) : null}
               <Button color="primary" type="submit">
                 Submit
               </Button>
@@ -155,14 +103,10 @@ export class Signup extends Component {
           </Col>
         </Row>
       </Container>
-    )
-  }
-}
+    );
+  };
+};
 
-function mapDispatchToProps(dispatch) {
-  return {
-    userSignup: bindActionCreators(userSignup, dispatch)
-  }
-}
+const mapDispatchToProps = dispatch => ({userSignup: bindActionCreators(userSignup, dispatch)});
 
-export default connect(null, mapDispatchToProps)(Signup)
+export default connect(null, mapDispatchToProps)(Signup);
