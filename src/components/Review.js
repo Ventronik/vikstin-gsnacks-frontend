@@ -1,9 +1,6 @@
 import React from 'react'
-// import ReactMarkdown from 'react-markdown'
 import { Link } from 'react-router-dom'
 import { request } from '../helpers'
-
-// import moment from 'moment'
 
 const Review = ({ review }) => {
   const { id, users_id, title, snack_id, rating, text } = review;
