@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Col, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Row, Col, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -27,13 +27,20 @@ class Snack extends React.Component {
             <CardText>{this.props.description.slice(0,50)}...</CardText>
           </CardBody>
         </Card>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>{this.props.name}</ModalHeader>
-          <ModalBody>
-            <img className="modal-img" src={this.props.img} alt={this.props.name} />
-            <small>{this.props.price} Credits</small>
-            <p>{this.props.description}</p>
-          </ModalBody>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className="snack-modal">
+          <Row>
+            <Col xs="5">
+              <img className="modal-img" src={this.props.img} alt={this.props.name} />
+            </Col>
+            <Col xs="7">
+              <ModalHeader toggle={this.toggle}></ModalHeader>
+              <ModalBody>
+                <h3>{this.props.name}</h3>
+                <h5>{this.props.price} Credits</h5>
+                <p>{this.props.description}</p>
+              </ModalBody>
+            </Col>
+          </Row>
         </Modal>
       </Col>
     );

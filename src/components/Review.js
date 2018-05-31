@@ -1,37 +1,48 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { request } from '../helpers'
+import React from 'react';
 
-const Review = ({ review, deleteReview }) => {
-  const { id, users_id, title, snack_id, rating, text } = review;
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { deleteReview } from '../actions/reviews';
 
-  return (
-    <div className="review">
-      <div>
-        <h1
-          style={{display:'inline'}}
-          className="review-title">
-          {title}
-        </h1>
-        {
-          <span className="float-right" >
-            <span
-              className="btn btn-md btn-secondary"
-              style={{marginRight:'5px'}}>
-              Edit
+class Review extends React.Component {
+  render () {
+    return (
+      <div className="review">
+        <div>
+          <h1
+            style={{display:'inline'}}
+            className="review-title">
+            {this.props.review.title}
+          </h1>
+          {
+            <span className="float-right">
+              <span
+                className="btn btn-md btn-secondary"
+                style={{marginRight:'5px'}}>
+                Edit
+              </span>
+              <span
+                onClick={() => this.props.deleteReview(this.props.review.id)}
+                className="btn btn-md btn-danger"
+                >
+                Delete
+              </span>
             </span>
-            <span
-              onClick={() => deleteReview(id)}
-              className="btn btn-md btn-danger"
-              >
-              Delete
-            </span>
-          </span>
-        }
+          }
+        </div>
       </div>
-    </div>
-  )
-}
+    );
+  };
+};
 
+// const Review = ({ review, deleteReview }) => {
+//   const { id, users_id, title, snack_id, rating, text } = review;
+//
+//   return (
+//
+//   )
+// }
 
-export default Review
+const mapDispatchToProps = dispatch => bindActionCreators({ deleteReview }, dispatch);
+
+export default connect(null, mapDispatchToProps)(Review);
