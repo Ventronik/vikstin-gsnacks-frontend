@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getReviews } from '../actions/reviews';
 
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { getReviews } from '../actions/auth.actions'
-import Review from './Review'
+import Review from './Review';
 
 class Reviews extends React.Component {
   componentDidMount() {
@@ -26,7 +26,11 @@ class Reviews extends React.Component {
 
 //refreshData={refreshData}
 
-const mapStateToProps = state => ({user: state.auth.user, reviews: state.auth.reviews})
-const mapDispatchToProps = dispatch => ({getReviews: bindActionCreators(getReviews, dispatch)})
+const mapStateToProps = state => ({
+  user: state.auth.user,
+  reviews: state.reviews.reviews
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Reviews)
+const mapDispatchToProps = dispatch => ({getReviews: bindActionCreators(getReviews, dispatch)});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reviews);
