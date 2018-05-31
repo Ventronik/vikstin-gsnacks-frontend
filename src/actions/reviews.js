@@ -35,12 +35,12 @@ export const deleteReview = (id) => (
 export const editReview = (event) => {
   event.preventDefault()
   return dispatch => {
-    request(`/api/reviews/${id}`, 'patch', {      //NEED ID
+    request(`/api/reviews/${event.target.id}`, 'patch', {      //NEED ID
       title: event.target.title.value,
       text: event.target.text.value,
-      rating: 3,                                  //CHANGE ME
-      user: 1,                                    //CHANGE ME
-      snack: 2,                                   //CHANGE ME
+      rating: 3,                                               //CHANGE ME
+      user: 1,                                                 //CHANGE ME
+      snack: 2,                                                //CHANGE ME
     } )
     .then(response => {
       return request('/api/reviews');
