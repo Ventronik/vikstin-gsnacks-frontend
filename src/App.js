@@ -22,11 +22,11 @@ class App extends React.Component {
       <div>
         <TopNav />
         <BrowserRouter>
-          {this.props.user.id ?
+          {this.props.authorized ?
             (
               <Switch>
                 <Route path="/snacks" component={Snacks} />
-                <Route path='/reviews' component={Reviews} />
+                <Route path="/reviews" component={Reviews} />
                 <Route path="/" component={() => <Redirect to="/snacks" />} />
               </Switch>
             ) : (
@@ -43,7 +43,10 @@ class App extends React.Component {
   };
 };
 
-const mapStateToProps = state => ({user: state.auth.user});
+const mapStateToProps = state => ({
+  user: state.auth.user,
+  authorized: state.auth.authorized
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators({ getUser }, dispatch);
 

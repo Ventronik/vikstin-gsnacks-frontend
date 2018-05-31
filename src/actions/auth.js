@@ -9,6 +9,7 @@ export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
 export const USER_SIGNUP_FAILED = 'USER_SIGNUP_FAILED';
 
 export const GET_USER = 'GET_USER';
+export const NOT_LOGGED_IN = 'NOT_LOGGED_IN';
 
 export const USER_LOGOUT = 'USER_LOGOUT';
 
@@ -40,7 +41,7 @@ export const userLogin = ({email, password}, history) => (
 export const userSignup = (newUser, history) => (
   dispatch => {
     dispatch({type: USER_SIGNUP_PENDING});
-    request('/api', 'post', {newUser})
+    request('/api/users', 'post', newUser)
     .then(response => {
       dispatch({
         type: USER_SIGNUP_SUCCESS,
@@ -64,6 +65,12 @@ export const getUser = () => (
       dispatch({
         type: GET_USER,
         payload: response.data
+      });
+    })
+    .catch(error => {
+      dispatch({
+        type: NOT_LOGGED_IN,
+        payload: error
       });
     });
   }

@@ -24,7 +24,6 @@ class Signup extends Component {
       });
     } else {
       let newUser = {first_name, last_name, email, password};
-      console.log('newUser', newUser);
       this.props.userSignup(newUser, this.props.history);
     }
   };

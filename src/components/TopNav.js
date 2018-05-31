@@ -4,19 +4,15 @@ import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getUser, userLogout } from '../actions/auth';
+import { userLogout } from '../actions/auth';
 
 class TopNav extends React.Component {
-  componentDidMount () {
-    this.props.getUser();
-  };
-
   render () {
     return (
       <div>
         <Navbar color="primary" dark expand="md">
           <NavbarBrand href="/">Vikstin Federal Penitentiary</NavbarBrand>
-            {this.props.user.id ?
+            {this.props.authorized ?
               (
                 <Nav className="ml-auto" navbar>
                   <NavItem>
@@ -26,10 +22,10 @@ class TopNav extends React.Component {
               ) : (
                  <Nav className="ml-auto" navbar>
                    <NavItem>
-                     <a href="/login" className="nav-link">Login</a>
+                     <a href="/login" className="nav-link">Log In</a>
                    </NavItem>
                    <NavItem>
-                     <a href="/signup" className="nav-link">Signup</a>
+                     <a href="/signup" className="nav-link">Sign Up</a>
                    </NavItem>
                  </Nav>
                )
@@ -40,8 +36,11 @@ class TopNav extends React.Component {
   };
 };
 
-const mapStateToProps = state => ({user: state.auth.user});
+const mapStateToProps = state => ({
+  user: state.auth.user,
+  authorized: state.auth.authorized
+});
 
-const mapDispatchToProps = dispatch => bindActionCreators({ getUser, userLogout }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ userLogout }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopNav);
