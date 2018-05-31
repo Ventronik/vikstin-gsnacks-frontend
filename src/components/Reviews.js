@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getReviews } from '../actions/reviews';
+import { deleteReview } from '../actions/reviews';
 
 import Review from './Review';
 
@@ -17,20 +18,18 @@ class Reviews extends React.Component {
     return (
       <div>
         {
-          reviews.map(review => <Review key={review.id} review={review}/>)
+          reviews.map(review => <Review key={review.id} review={review} deleteReview={deleteReview}/>)
         }
       </div>
     )
   }
 }
 
-//refreshData={refreshData}
-
 const mapStateToProps = state => ({
   user: state.auth.user,
   reviews: state.reviews.reviews
 });
 
-const mapDispatchToProps = dispatch => ({getReviews: bindActionCreators(getReviews, dispatch)});
+const mapDispatchToProps = dispatch => ({getReviews: bindActionCreators(getReviews, dispatch), deleteReview: bindActionCreators(deleteReview, dispatch)});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reviews);
