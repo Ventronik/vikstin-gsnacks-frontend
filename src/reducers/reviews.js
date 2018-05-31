@@ -1,6 +1,8 @@
 import {
   GET_REVIEWS,
-  DELETE_REVIEW
+  DELETE_REVIEW,
+  EDIT_REVIEW,
+  CREATE_REVIEW
 } from '../actions/reviews';
 
 let initialState = {
@@ -13,6 +15,10 @@ export default (state = initialState, action) => {
       return {...state, reviews: action.payload};
     case DELETE_REVIEW:
       return {...state, reviews: action.payload};
+    case EDIT_REVIEW:
+      return {...state, reviews: action.payload};
+      case CREATE_REVIEW:
+        return {...state, reviews: action.payload};
     default:
       return state;
   }
