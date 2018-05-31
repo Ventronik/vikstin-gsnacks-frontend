@@ -12,7 +12,7 @@ import {
 } from 'reactstrap'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { userLogin } from '../actions/auth.actions'
+import { userLogin } from '../actions/auth'
 
 class Login extends Component {
   state = {
