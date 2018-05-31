@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Login from './components/Login';
 import TopNav from './components/TopNav';
 import Signup from './components/Signup';
-import UserProfile from './components/UserProfile';
+import Snacks from './components/Snacks';
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
           <Route exact path="/" component={() => <Redirect to="/login" />} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route path="/profile" component={UserProfile} />
+          <Route path="/snacks" component={Snacks} />
         </Switch>
       </BrowserRouter>
     </div>

@@ -9,7 +9,7 @@ import {
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { userLogout } from '../actions/auth.actions'
+import { userLogout } from '../actions/auth'
 
 class TopNav extends React.Component {
   render() {
