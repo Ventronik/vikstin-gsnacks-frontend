@@ -10,35 +10,6 @@ export const USER_SIGNUP_FAILED = 'USER_SIGNUP_FAILED';
 
 export const USER_LOGOUT = 'USER_LOGOUT';
 
-export const GET_SNACKS = 'GET_SNACKS';
-export const GET_REVIEWS = 'GET_REVIEWS';
-
-export const getSnacks = () => {
-  return dispatch => {
-    console.log('hi');
-    request('/api/snacks')
-    .then(response => {
-      dispatch({
-        type: GET_SNACKS,
-        payload: response.data
-      });
-    });
-  }
-};
-
-export const getReviews = () => {
-  return dispatch => {
-    console.log('hi');
-    request('/api/reviews')
-    .then(response => {
-      dispatch({
-        type: GET_REVIEWS,
-        payload: response.data.data
-      });
-    });
-  }
-};
-
 export const userLogin = ({email, password}, history) => (
   dispatch => {
     dispatch({type: USER_LOGIN_PENDING});

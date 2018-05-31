@@ -5,18 +5,14 @@ import {
   USER_SIGNUP_PENDING,
   USER_SIGNUP_SUCCESS,
   USER_SIGNUP_FAILED,
-  USER_LOGOUT,
-  GET_SNACKS,
-  GET_REVIEWS
-} from '../actions/auth.actions';
+  USER_LOGOUT
+} from '../actions/auth';
 
 let initialState = {
   isLoading: false,
   user: {},
   showLoginError: false,
-  showSignupError: false,
-  snacks: [],
-  reviews: []
+  showSignupError: false
 };
 
 export default (state = initialState, action) => {
@@ -35,10 +31,6 @@ export default (state = initialState, action) => {
       return {...state, isLoading: false, showSignupError: true};
     case USER_LOGOUT:
       return {...state, user: {}};
-    case GET_SNACKS:
-      return {...state, snacks: action.payload};
-    case GET_REVIEWS:
-      return {...state, reviews: action.payload}
     default:
       return state;
   }
