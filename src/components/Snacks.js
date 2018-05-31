@@ -41,7 +41,6 @@ class Snacks extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  user: state.auth.user,
   snacks: state.snacks.snacks
 });
 

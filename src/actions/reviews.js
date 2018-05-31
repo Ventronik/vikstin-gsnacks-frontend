@@ -3,8 +3,8 @@ import request from '../helpers/request';
 export const GET_REVIEWS = 'GET_REVIEWS';
 export const DELETE_REVIEW = 'DELETE_REVIEW';
 
-export const getReviews = () => {
-  return dispatch => {
+export const getReviews = () => (
+  dispatch => {
     request('/api/reviews')
     .then(response => {
       dispatch({
@@ -13,11 +13,10 @@ export const getReviews = () => {
       });
     });
   }
-};
+);
 
-export const deleteReview = (id) => {
-  console.log('reviews in actions id: ', id)
-  return dispatch => {
+export const deleteReview = (id) => (
+  dispatch => {
     request(`/api/reviews/${id}`, 'delete')
     .then(response => {
       dispatch({
@@ -25,5 +24,6 @@ export const deleteReview = (id) => {
         payload: response.data.data
       });
     });
+
   }
-};
+);

@@ -2,8 +2,8 @@ import request from '../helpers/request';
 
 export const GET_SNACKS = 'GET_SNACKS';
 
-export const getSnacks = () => {
-  return dispatch => {
+export const getSnacks = () => (
+  dispatch => {
     request('/api/snacks')
     .then(response => {
       dispatch({
@@ -12,4 +12,4 @@ export const getSnacks = () => {
       });
     });
   }
-};
+);
