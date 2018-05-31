@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
     case GET_REVIEWS:
       return {...state, reviews: action.payload};
     case DELETE_REVIEW:
-      return {...state};
+      return {...state, reviews: action.payload};
     default:
       return state;
   }
