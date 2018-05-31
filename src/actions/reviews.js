@@ -23,7 +23,9 @@ export const deleteReview = (id) => (
         type: DELETE_REVIEW,
         payload: response.data.data
       });
-    });
-
+    })
+    .then(response => {
+      getReviews();
+    })
   }
 );

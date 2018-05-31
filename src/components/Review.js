@@ -22,7 +22,7 @@ class Review extends React.Component {
                 Edit
               </span>
               <span
-                onClick={deleteReview(this.props.review.id)}
+                onClick={() => this.props.deleteReview(this.props.review.id)}
                 className="btn btn-md btn-danger"
                 >
                 Delete
@@ -43,10 +43,6 @@ class Review extends React.Component {
 //   )
 // }
 
-const mapStateToProps = state => ({
-  reviews: state.reviews.reviews
-});
-
 const mapDispatchToProps = dispatch => bindActionCreators({ deleteReview }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Review);
+export default connect(null, mapDispatchToProps)(Review);

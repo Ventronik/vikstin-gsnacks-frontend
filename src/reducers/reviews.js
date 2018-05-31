@@ -4,7 +4,7 @@ import {
 } from '../actions/reviews';
 
 let initialState = {
-  reviews: [],
+  reviews: []
 };
 
 export default (state = initialState, action) => {
