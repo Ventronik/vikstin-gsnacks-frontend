@@ -57,7 +57,7 @@ class Review extends React.Component {
           }
           <div className="text-center">
             <Collapse isOpen={this.state.collapse}>
-              <Card style={{marginBottom:'2rem'}}>
+              <Card style={{marginTop: '1rem', backgroundColor: 'lightgray'}}>
                 <CardBody>
                   <EditReview review={this.props.review} snackId={this.props.snackId} />
                 </CardBody>

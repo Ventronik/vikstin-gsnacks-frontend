@@ -26,7 +26,7 @@ export const userLogin = ({email, password}, history) => (
         type: USER_LOGIN_SUCCESS,
         payload: response.data
       });
-      history.push('/snacks');
+      history.push('/welcome');
     })
     .catch(error => {
       dispatch({

@@ -32,7 +32,7 @@ class Signup extends Component {
   render () {
     return (
       <div className="welcome-container">
-        <Modal className="welcome-modal" isOpen="true" centered="true">
+        <Modal className="welcome-modal" isOpen centered>
           <Form onSubmit={this.userSignup}>
             <ModalBody>
               <FormGroup>
