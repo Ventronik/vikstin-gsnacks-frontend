@@ -17,8 +17,8 @@ export default (state = initialState, action) => {
       return {...state, reviews: action.payload};
     case EDIT_REVIEW:
       return {...state, reviews: action.payload};
-      case CREATE_REVIEW:
-        return {...state, reviews: action.payload};
+    case CREATE_REVIEW:
+      return {...state, reviews: action.payload};
     default:
       return state;
   }

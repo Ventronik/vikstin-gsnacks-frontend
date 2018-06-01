@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Row, Col, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Row, Col, Card, CardImg, CardBody, CardTitle, CardSubtitle, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -28,7 +28,7 @@ class Snack extends React.Component {
             <CardSubtitle>{this.props.price} Credits</CardSubtitle>
           </CardBody>
         </Card>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className="snack-modal" centered="true">
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className="snack-modal" centered>
           <Row>
             <Col xs="5">
               <img className="modal-img" src={this.props.img} alt={this.props.name} />
@@ -38,7 +38,6 @@ class Snack extends React.Component {
               <ModalBody>
                 <h5>{this.props.price} Credits</h5>
                 <p>{this.props.description}</p>
-                <hr style={{margin: '2rem -2rem'}} />
                 <Reviews snackId={this.props.id} />
               </ModalBody>
             </Col>
@@ -49,8 +48,6 @@ class Snack extends React.Component {
   };
 };
 
-const mapStateToProps = state => ({snack: state.snacks.snack});
-
 const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Snack);
+export default connect(null, mapDispatchToProps)(Snack);

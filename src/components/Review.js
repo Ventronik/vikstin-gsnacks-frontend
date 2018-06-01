@@ -39,17 +39,14 @@ class Review extends React.Component {
                 </span>
               </span>
             ) : null
-          }  
+          }
         </div>
       </div>
     );
   };
 };
 
-
-const mapStateToProps = state => ({
-  user: state.auth.user
-});
+const mapStateToProps = state => ({user: state.auth.user});
 
 const mapDispatchToProps = dispatch => bindActionCreators({ deleteReview }, dispatch);
 

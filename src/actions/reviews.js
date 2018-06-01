@@ -54,24 +54,17 @@ export const editReview = (event, stars) => {
   }
 }
 
-export const createReview = (event, stars) => {
-  event.preventDefault()
+export const createReview = (title, text, rating, user, snack) => {
   return dispatch => {
-    request(`/api/reviews`, 'post', {
-      title: event.target.title.value,
-      text: event.target.text.value,
-      rating: stars,                                  //CHANGE ME
-      user: 1,                                    //CHANGE ME
-      snack: 2,                                   //CHANGE ME
-    })
+    request(`/api/reviews`, 'post', {title, text, rating, user, snack})
     .then(response => {
       return request('/api/reviews');
     })
     .then(response => {
       dispatch({
         type: CREATE_REVIEW,
-        payload:response.data.data
+        payload: response.data.data
       });
-    })
+    });
   }
-}
+};

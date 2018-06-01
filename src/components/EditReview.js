@@ -1,26 +1,23 @@
 import React from 'react';
 
 import ReactStars from 'react-stars'
-import { render } from 'react-dom'
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { editReview } from '../actions/reviews';
 
 class EditReview extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      title: this.props.title,
-      text: this.props.text,
-      stars: this.props.rating
-    }
-  }
+  state = {
+    title: this.props.title,
+    text: this.props.text,
+    stars: this.props.rating
+  };
 
   ratingChanged = (newRating) => {
-    this.state.stars = newRating
-    console.log(this.state.stars)
-  }
+    this.setState({
+      stars: newRating
+    });
+  };
 
   render () {
     return (
