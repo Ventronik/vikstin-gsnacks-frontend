@@ -33,8 +33,8 @@ class SubmitReview extends React.Component {
       title: '',
       text: '',
       stars: 0
-    })
-  }
+    });
+  };
 
   render () {
     return (
