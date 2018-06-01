@@ -3,16 +3,17 @@ import React from 'react';
 import ReactStars from 'react-stars'
 import { render } from 'react-dom'
 
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { createReview } from '../actions/reviews';
+import { editReview } from '../actions/reviews';
 
-class SubmitReview extends React.Component {
+class EditReview extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      stars: 0
+      title: this.props.title,
+      text: this.props.text,
+      stars: this.props.rating
     }
   }
 
@@ -25,7 +26,7 @@ class SubmitReview extends React.Component {
     return (
       <div className="container">
 
-        <form onSubmit={(event)=>this.props.createReview(event, this.state.stars)}  >
+        <form onSubmit={(event)=>this.props.editReview(event, this.state.stars)}  >
           <div className="form-group">
             <label htmlFor="exampleFormControlInput1">Review Title</label>
             <input name="title" type="text" className="form-control" id="exampleFormControlInput1" />
@@ -55,7 +56,5 @@ class SubmitReview extends React.Component {
   };
 };
 
-
-const mapDispatchToProps = dispatch => bindActionCreators({ createReview }, dispatch);
-
-export default connect(null, mapDispatchToProps)(SubmitReview);
+const mapDispatchToProps = dispatch => bindActionCreators({ editReview }, dispatch);
+export default connect(null, mapDispatchToProps)(EditReview);
