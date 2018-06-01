@@ -35,13 +35,6 @@ class Review extends React.Component {
   };
 };
 
-// const Review = ({ review, deleteReview }) => {
-//   const { id, users_id, title, snack_id, rating, text } = review;
-//
-//   return (
-//
-//   )
-// }
 
 const mapDispatchToProps = dispatch => bindActionCreators({ deleteReview }, dispatch);
 
