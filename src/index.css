@@ -14,6 +14,10 @@ body {
   font-size: 2rem;
 }
 
+.navbar img {
+  height: 44px;
+}
+
 .alert {
   margin-bottom: 0;
   margin-top: 1rem;
@@ -117,13 +121,18 @@ body {
 }
 
 .jumbotron.home {
-  background: linear-gradient(rgba(0,0,0, .7), rgba(0,0,0, .4)), url('./assets/background.jpg') top/cover;
+  background: linear-gradient(rgba(0,0,0, .9), rgba(0,0,0, .7)), url('./assets/background.jpg') top/cover;
   color: white;
 }
 
 .jumbotron.home-features {
   background: #1f2327;
   color: white;
+}
+
+.jumbotron.home-features img {
+  margin-bottom: 2rem;
+  width: 70%;
 }
 
 footer {
