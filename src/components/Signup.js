@@ -32,7 +32,7 @@ class Signup extends Component {
   render () {
     return (
       <div className="welcome-container">
-        <Modal className="welcome-modal" isOpen="true" centered="true">
+        <Modal className="welcome-modal" isOpen centered>
           <Form onSubmit={this.userSignup}>
             <ModalBody>
               <FormGroup>
@@ -88,11 +88,11 @@ class Signup extends Component {
                 />
               </FormGroup>
               {this.state.invalid ? (
-                <Alert className="alert" color="danger">Please fill out all fields correctly.</Alert>
+                <Alert color="danger">Please fill out all fields correctly.</Alert>
               ) : null}
             </ModalBody>
             <ModalFooter>
-              <Button className="mr-3" type="submit" color="primary">
+              <Button type="submit" color="primary">
                 Submit
               </Button>
               <a href="/login">Already a member?</a>

@@ -32,46 +32,32 @@ export const deleteReview = (id) => (
   }
 );
 
-export const editReview = (event, stars) => {
-  event.preventDefault()
-  return dispatch => {
-    request(`/api/reviews/${event.target.id}`, 'patch', {      //NEED ID
-      title: event.target.title.value,
-      text: event.target.text.value,
-      rating: stars,                                               //CHANGE ME
-      user: 1,                                                 //CHANGE ME
-      snack: 2,                                                //CHANGE ME
-    } )
+export const editReview = (id, title, text, rating, user, snack) => (
+  dispatch => {
+    request(`/api/reviews/${id}`, 'patch', {title, text, rating, user, snack})
     .then(response => {
       return request('/api/reviews');
     })
     .then(response => {
       dispatch({
         type: EDIT_REVIEW,
-        payload:response.data.data
+        payload: response.data.data
       });
-    })
+    });
   }
-}
+);
 
-export const createReview = (event, stars) => {
-  event.preventDefault()
-  return dispatch => {
-    request(`/api/reviews`, 'post', {
-      title: event.target.title.value,
-      text: event.target.text.value,
-      rating: stars,                                  //CHANGE ME
-      user: 1,                                    //CHANGE ME
-      snack: 2,                                   //CHANGE ME
-    })
+export const createReview = (title, text, rating, user, snack) => (
+  dispatch => {
+    request('/api/reviews', 'post', {title, text, rating, user, snack})
     .then(response => {
       return request('/api/reviews');
     })
     .then(response => {
       dispatch({
         type: CREATE_REVIEW,
-        payload:response.data.data
+        payload: response.data.data
       });
-    })
+    });
   }
-}
+);

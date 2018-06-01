@@ -2,7 +2,7 @@ html,
 body {
   font-family: 'Sunflower', sans-serif;
   height: 100%;
-  padding-top: 30px;
+  padding-top: 37px;
 }
 
 .navbar {
@@ -40,7 +40,7 @@ body {
 }
 
 .snacks-container {
-  background-color: lightgray;
+  background-color: #e7e7e7;
   margin-bottom: 0;
 }
 
@@ -87,6 +87,7 @@ body {
 .modal-img {
   border-radius: 0.3rem 0 0 0.3rem;
   height: 100%;
+  max-height: 463px;
   object-fit: cover;
   width: 100%;
 }
@@ -140,4 +141,24 @@ footer {
   color: white;
   padding: 2rem;
   text-align: center;
+}
+
+.review {
+  background-color: #e7e7e7;
+  border-radius: 0.3rem;
+  margin: 2rem 0;
+  padding: 1rem;
+}
+
+.review:first-child {
+  margin: 1rem 0 2rem;
+}
+
+.review-control {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rating-wrap > div {
+  display: inline-block !important;
 }

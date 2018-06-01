@@ -12,10 +12,10 @@ class TopNav extends React.Component {
       <div>
         <Navbar color="dark" dark expand="md" fixed="top">
           <NavbarBrand href="/">
-            <img src="./logo.svg" /> V.F.P.
+            <img src="./logo.svg" alt="Vikstin Federal Penitentiary" /> V.F.P.
           </NavbarBrand>
-            {this.props.authorized ?
-              (
+            {
+              this.props.authorized ? (
                 <Nav className="ml-auto" navbar>
                   <NavItem>
                     <NavLink className="nav-link" disabled>Hello, #452{this.props.user.id}</NavLink>
@@ -31,15 +31,15 @@ class TopNav extends React.Component {
                   </NavItem>
                 </Nav>
               ) : (
-                 <Nav className="ml-auto" navbar>
-                   <NavItem>
-                     <NavLink href="/login" className="nav-link">Log In</NavLink>
-                   </NavItem>
-                   <NavItem>
-                     <NavLink href="/signup" className="nav-link">Sign Up</NavLink>
-                   </NavItem>
-                 </Nav>
-               )
+                <Nav className="ml-auto" navbar>
+                  <NavItem>
+                    <NavLink href="/login" className="nav-link">Log In</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="/signup" className="nav-link">Sign Up</NavLink>
+                  </NavItem>
+                </Nav>
+              )
             }
         </Navbar>
       </div>

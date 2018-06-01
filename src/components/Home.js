@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <Jumbotron className="home">
-        <img src="./logo.svg" />
+        <img src="./logo.svg" alt="Vikstin Federal Penitentiary" />
         <hr />
         <h1 className="display-3">Vikstin Federal Penitentiary</h1>
       </Jumbotron>
@@ -21,16 +21,16 @@ const Home = () => {
         <Container>
           <Row>
             <Col md="4">
-              <img src="./feature1.svg" />
+              <img src="./feature1.svg" alt="Feature 1" />
               <h4>Minimum required nutrients to survive, for the most part</h4>
             </Col>
 
             <Col md="4">
-              <img src="./feature2.svg" />
+              <img src="./feature2.svg" alt="Feature 2" />
               <h4>Reduced sawdust input, guaranteed</h4>
             </Col>
             <Col md="4">
-              <img src="./feature3.svg" />
+              <img src="./feature3.svg" alt="Feature 3" />
               <h4>Frozen fish unsustainably sourced from the Ganges</h4>
             </Col>
           </Row>
