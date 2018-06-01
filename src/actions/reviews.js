@@ -32,13 +32,13 @@ export const deleteReview = (id) => (
   }
 );
 
-export const editReview = (event) => {
+export const editReview = (event, stars) => {
   event.preventDefault()
   return dispatch => {
     request(`/api/reviews/${event.target.id}`, 'patch', {      //NEED ID
       title: event.target.title.value,
       text: event.target.text.value,
-      rating: 3,                                               //CHANGE ME
+      rating: stars,                                               //CHANGE ME
       user: 1,                                                 //CHANGE ME
       snack: 2,                                                //CHANGE ME
     } )
@@ -54,13 +54,13 @@ export const editReview = (event) => {
   }
 }
 
-export const createReview = (event) => {
+export const createReview = (event, stars) => {
   event.preventDefault()
   return dispatch => {
     request(`/api/reviews`, 'post', {
       title: event.target.title.value,
       text: event.target.text.value,
-      rating: 3,                                  //CHANGE ME
+      rating: stars,                                  //CHANGE ME
       user: 1,                                    //CHANGE ME
       snack: 2,                                   //CHANGE ME
     })

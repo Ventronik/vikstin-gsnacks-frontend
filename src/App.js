@@ -13,6 +13,7 @@ import Signup from './components/Signup';
 import Snacks from './components/Snacks';
 import Reviews from './components/Reviews';
 import SubmitReview from './components/SubmitReview';
+import EditReview from './components/EditReview';
 
 class App extends React.Component {
   componentDidMount () {
@@ -30,6 +31,7 @@ class App extends React.Component {
             <Route path="/snacks" component={Snacks} />
             <Route path="/reviews" component={Reviews} />
             <Route path="/reviewForm" component={SubmitReview} />
+          <Route path="/editForm" component={EditReview} />
             {this.props.authorized ?
               (
                 <Route exact path="/" component={() => <Redirect to="/snacks" />} />
