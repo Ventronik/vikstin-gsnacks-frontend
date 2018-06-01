@@ -12,6 +12,9 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Snacks from './components/Snacks';
 import Reviews from './components/Reviews';
+import Unauthorized from './components/Unauthorized';
+import Welcome from './components/Welcome';
+import Home from './components/Home';
 
 class App extends React.Component {
   componentDidMount () {
@@ -23,19 +26,32 @@ class App extends React.Component {
       <div>
         <TopNav />
         <BrowserRouter>
-          <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/snacks" component={Snacks} />
-            <Route path="/reviews" component={Reviews} />
-            {this.props.authorized ?
-              (
+          {this.props.authorized ?
+            (
+              <Switch>
+                <Route path="/snacks" component={Snacks} />
+                <Route path="/reviews" component={Reviews} />
+                <Route path="/home" component={Home} />
+                <Route path="/unauthorized" component={Unauthorized} />
+                <Route path="/welcome" component={Welcome} />
+                <Route path="/login" component={() => <Redirect to="/snacks" />} />
+                <Route path="/signup" component={() => <Redirect to="/snacks" />} />
                 <Route exact path="/" component={() => <Redirect to="/snacks" />} />
-              ) : (
+              </Switch>
+            ) : (
+              <Switch>
+                <Route path="/home" component={Home} />
+                <Route path="/snacks" component={() => <Redirect to="/login" />} />
+                <Route path="/reviews" component={Reviews} />
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/unauthorized" component={Unauthorized} />
+                <Route path="/unauthorized" component={Unauthorized} />
+                <Route path="/welcome" component={Welcome} />
                 <Route exact path="/" component={() => <Redirect to="/login" />} />
-               )
-            }
-          </Switch>
+              </Switch>
+             )
+          }
         </BrowserRouter>
         <Footer />
       </div>

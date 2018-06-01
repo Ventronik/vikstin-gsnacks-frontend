@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import { getSnacks } from '../actions/snacks';
 
 import Snack from './Snack';
+import Carousel from './Carousel';
 
 class Snacks extends React.Component {
   componentDidMount () {
@@ -15,8 +16,9 @@ class Snacks extends React.Component {
 
   render () {
     return (
-      <div>
-        <Container>
+      <div className="snacks-container">
+        <Carousel />
+        <Container className="main-container">
           <Row>
             {
               this.props.snacks.map(snack => {
