@@ -14,6 +14,9 @@ import Snacks from './components/Snacks';
 import Reviews from './components/Reviews';
 import SubmitReview from './components/SubmitReview';
 import EditReview from './components/EditReview';
+import Unauthorized from './components/Unauthorized';
+import Welcome from './components/Welcome';
+import Home from './components/Home';
 
 class App extends React.Component {
   componentDidMount () {
@@ -26,19 +29,15 @@ class App extends React.Component {
         <TopNav />
         <BrowserRouter>
           <Switch>
+            <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/snacks" component={Snacks} />
             <Route path="/reviews" component={Reviews} />
             <Route path="/reviewForm" component={SubmitReview} />
-          <Route path="/editForm" component={EditReview} />
-            {this.props.authorized ?
-              (
-                <Route exact path="/" component={() => <Redirect to="/snacks" />} />
-              ) : (
-                <Route exact path="/" component={() => <Redirect to="/login" />} />
-               )
-            }
+            <Route path="/editForm" component={EditReview} />
+            <Route path="/unauthorized" component={Unauthorized} />
+            <Route path="/welcome" component={Welcome} />
           </Switch>
         </BrowserRouter>
         <Footer />

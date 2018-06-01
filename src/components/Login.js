@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Form, FormGroup, Container, Row, Col, Alert, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Alert, Input, Modal, ModalBody, ModalFooter } from 'reactstrap';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -20,17 +20,10 @@ class Login extends React.Component {
 
   render () {
     return (
-      <Container className="main-wrapper">
-        <Row style={{ marginTop: '15vh' }}>
-          <Col
-            lg={{ size: 4, offset: 4 }}
-            style={{
-              border: '1px solid #c9c5c2',
-              padding: 35,
-              boxShadow: '3px 3px 47px 0px rgba(0,0,0,0.5)'
-            }}
-          >
-            <Form onSubmit={this.handleLogin}>
+      <div className="welcome-container">
+        <Modal className="welcome-modal" isOpen="true" centered="true">
+          <Form onSubmit={this.handleLogin}>
+            <ModalBody>
               <FormGroup>
                 <Input
                   type="email"
@@ -56,14 +49,16 @@ class Login extends React.Component {
                   Email or password is incorrect.
                 </Alert>
               ) : null}
-              <Button className="mr-3" type="submit" color="primary">
+            </ModalBody>
+            <ModalFooter>
+              <Button type="submit" color="primary">
                 Submit
               </Button>
               <a href="/signup">Not a member?</a>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+            </ModalFooter>
+          </Form>
+        </Modal>
+      </div>
     );
   };
 };
