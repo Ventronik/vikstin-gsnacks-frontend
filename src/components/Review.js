@@ -23,19 +23,23 @@ class Review extends React.Component {
           <p>
             {this.props.review.text}
           </p>
-          <span className="review-control">
-            <span
-              className="btn btn-md btn-secondary"
-              style={{marginRight:'5px'}}>
-              Edit
-            </span>
-            <span
-              onClick={() => this.props.deleteReview(this.props.review.id)}
-              className="btn btn-md btn-danger"
-              >
-              Delete
-            </span>
-          </span>
+          {
+            this.props.user.id === this.props.review.user_id ? (
+              <span className="review-control">
+                <span
+                  className="btn btn-md btn-secondary"
+                  style={{marginRight:'5px'}}>
+                  Edit
+                </span>
+                <span
+                  onClick={() => this.props.deleteReview(this.props.review.id)}
+                  className="btn btn-md btn-danger"
+                  >
+                  Delete
+                </span>
+              </span>
+            ) : null
+          }  
         </div>
       </div>
     );
@@ -43,6 +47,10 @@ class Review extends React.Component {
 };
 
 
+const mapStateToProps = state => ({
+  user: state.auth.user
+});
+
 const mapDispatchToProps = dispatch => bindActionCreators({ deleteReview }, dispatch);
 
-export default connect(null, mapDispatchToProps)(Review);
+export default connect(mapStateToProps, mapDispatchToProps)(Review);
