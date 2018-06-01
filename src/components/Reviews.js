@@ -5,9 +5,10 @@ import { bindActionCreators } from 'redux';
 import { getReviews, deleteReview, editReview } from '../actions/reviews';
 
 import Review from './Review';
+import SubmitReview from './SubmitReview'
 
 class Reviews extends React.Component {
-  componentDidMount() {
+  componentDidMount () {
     this.props.getReviews();
   };
 
@@ -16,10 +17,18 @@ class Reviews extends React.Component {
     return (
       <div>
         {
-          reviews.map(review => <Review key={review.id} review={review} deleteReview={deleteReview} editReview={editReview}/>)
+          reviews.map(review =>
+            <Review
+              key={review.id}
+              review={review}
+              deleteReview={deleteReview}
+              editReview={editReview}
+            />
+          )
         }
+        <SubmitReview />
       </div>
-    )
+    );
   };
 };
 
