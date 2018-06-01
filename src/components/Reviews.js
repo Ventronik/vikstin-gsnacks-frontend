@@ -4,7 +4,7 @@ import { Collapse, Button, CardBody, Card } from 'reactstrap';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getReviews, deleteReview, editReview } from '../actions/reviews';
+import { getReviews } from '../actions/reviews';
 
 import ReactStars from 'react-stars';
 
@@ -16,7 +16,7 @@ class Reviews extends React.Component {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = { collapse: false };
-  }
+  };
 
   componentDidMount () {
     this.props.getReviews();
@@ -47,8 +47,6 @@ class Reviews extends React.Component {
             <Review
               key={review.id}
               review={review}
-              deleteReview={deleteReview}
-              editReview={editReview}
               snackId={this.props.snackId}
             />
           )
@@ -71,6 +69,6 @@ class Reviews extends React.Component {
 
 const mapStateToProps = state => ({reviews: state.reviews.reviews});
 
-const mapDispatchToProps = dispatch => bindActionCreators({ getReviews, deleteReview, editReview }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getReviews }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reviews);

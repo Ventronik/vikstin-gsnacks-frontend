@@ -4,7 +4,7 @@ import { Collapse, CardBody, Card } from 'reactstrap';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deleteReview, editReview } from '../actions/reviews';
+import { deleteReview } from '../actions/reviews';
 
 import ReactStars from 'react-stars';
 
@@ -15,7 +15,7 @@ class Review extends React.Component {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = { collapse: false };
-  }
+  };
 
   toggle () {
     this.setState({ collapse: !this.state.collapse });
@@ -64,7 +64,6 @@ class Review extends React.Component {
               </Card>
             </Collapse>
           </div>
-
         </div>
       </div>
     );
@@ -73,6 +72,6 @@ class Review extends React.Component {
 
 const mapStateToProps = state => ({user: state.auth.user});
 
-const mapDispatchToProps = dispatch => bindActionCreators({ deleteReview, editReview }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ deleteReview }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Review);
