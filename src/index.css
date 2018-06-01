@@ -158,3 +158,7 @@ footer {
   display: flex;
   justify-content: flex-end;
 }
+
+.rating-wrap > div {
+  display: inline-block !important;
+}

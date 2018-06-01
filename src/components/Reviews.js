@@ -4,8 +4,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getReviews, deleteReview, editReview } from '../actions/reviews';
 
+import ReactStars from 'react-stars';
+
 import Review from './Review';
-import SubmitReview from './SubmitReview'
+import SubmitReview from './SubmitReview';
+import EditReview from './EditReview';
 
 class Reviews extends React.Component {
   componentDidMount () {
@@ -13,9 +16,20 @@ class Reviews extends React.Component {
   };
 
   render () {
-    const reviews = this.props.reviews;
+    const reviews = this.props.reviews.filter(review => review.snack_id === this.props.snackId);
+    const average = reviews.map(review => review.rating).reduce((total, rate) => total + parseInt(rate), 0) / reviews.length;
     return (
       <div>
+        <h4 className="text-center" style={{color:'gray'}}>Reviews</h4>
+        <div className="rating-wrap text-center">
+          <ReactStars
+            count={5}
+            size={25}
+            color2={'#dc7c32'}
+            value={average}
+            edit={false}
+          />
+        </div>
         {
           reviews.map(review =>
             <Review
@@ -27,6 +41,7 @@ class Reviews extends React.Component {
           )
         }
         <SubmitReview />
+        <EditReview />
       </div>
     );
   };

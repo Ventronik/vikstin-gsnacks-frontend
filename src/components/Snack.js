@@ -26,7 +26,6 @@ class Snack extends React.Component {
           <CardBody>
             <CardTitle>{this.props.name}</CardTitle>
             <CardSubtitle>{this.props.price} Credits</CardSubtitle>
-            <CardText>{this.props.description.slice(0,50)}...</CardText>
           </CardBody>
         </Card>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className="snack-modal" centered="true">
@@ -40,8 +39,7 @@ class Snack extends React.Component {
                 <h5>{this.props.price} Credits</h5>
                 <p>{this.props.description}</p>
                 <hr style={{margin: '2rem -2rem'}} />
-                <h4 className="text-center" style={{color:'gray'}}>Reviews</h4>
-                <Reviews />
+                <Reviews snackId={this.props.id} />
               </ModalBody>
             </Col>
           </Row>
