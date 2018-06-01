@@ -1,12 +1,26 @@
 import React from 'react';
 
+import { Collapse, CardBody, Card } from 'reactstrap';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deleteReview } from '../actions/reviews';
+import { deleteReview, editReview } from '../actions/reviews';
 
 import ReactStars from 'react-stars';
 
+import EditReview from './EditReview';
+
 class Review extends React.Component {
+  constructor (props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = { collapse: false };
+  }
+
+  toggle () {
+    this.setState({ collapse: !this.state.collapse });
+  };
+
   render () {
     return (
       <div className="review">
@@ -27,6 +41,7 @@ class Review extends React.Component {
             this.props.user.id === this.props.review.user_id ? (
               <span className="review-control">
                 <span
+                  onClick={this.toggle}
                   className="btn btn-md btn-secondary"
                   style={{marginRight:'5px'}}>
                   Edit
@@ -40,6 +55,16 @@ class Review extends React.Component {
               </span>
             ) : null
           }
+          <div className="text-center">
+            <Collapse isOpen={this.state.collapse}>
+              <Card style={{marginBottom:'2rem'}}>
+                <CardBody>
+                  <EditReview review={this.props.review} snackId={this.props.snackId} />
+                </CardBody>
+              </Card>
+            </Collapse>
+          </div>
+
         </div>
       </div>
     );
@@ -48,6 +73,6 @@ class Review extends React.Component {
 
 const mapStateToProps = state => ({user: state.auth.user});
 
-const mapDispatchToProps = dispatch => bindActionCreators({ deleteReview }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ deleteReview, editReview }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Review);

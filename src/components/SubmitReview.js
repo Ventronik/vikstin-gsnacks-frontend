@@ -22,7 +22,6 @@ class SubmitReview extends React.Component {
       this.setState({
         invalid: true
       });
-      console.log(this.state);
     } else {
       this.props.createReview(this.state.title, this.state.text, this.state.stars, this.props.user.id, this.props.snackId);
       this.clear();
@@ -84,10 +83,7 @@ class SubmitReview extends React.Component {
   };
 };
 
-
-const mapStateToProps = state => ({
-  user: state.auth.user
-});
+const mapStateToProps = state => ({user: state.auth.user});
 
 const mapDispatchToProps = dispatch => bindActionCreators({ createReview }, dispatch);
 

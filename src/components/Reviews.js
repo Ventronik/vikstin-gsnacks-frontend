@@ -10,10 +10,9 @@ import ReactStars from 'react-stars';
 
 import Review from './Review';
 import SubmitReview from './SubmitReview';
-import EditReview from './EditReview';
 
 class Reviews extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = { collapse: false };
@@ -65,7 +64,6 @@ class Reviews extends React.Component {
             </Card>
           </Collapse>
         </div>
-        {/* <EditReview /> */}
       </div>
     );
   };
