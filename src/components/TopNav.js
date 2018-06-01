@@ -10,8 +10,8 @@ class TopNav extends React.Component {
   render () {
     return (
       <div>
-        <Navbar color="primary" dark expand="md">
-          <NavbarBrand href="/">Vikstin Federal Penitentiary</NavbarBrand>
+        <Navbar color="dark" dark expand="md" fixed="top">
+          <NavbarBrand href="/">V.F.P.</NavbarBrand>
             {this.props.authorized ?
               (
                 <Nav className="ml-auto" navbar>

@@ -1,10 +1,47 @@
 html,
 body {
+  font-family: 'Sunflower', sans-serif;
   height: 100%;
+  padding-top: 30px;
+}
+
+.navbar {
+  box-shadow: 3px 3px 47px 0px rgba(0,0,0,0.5);
+}
+
+.navbar-brand {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2rem;
 }
 
 .alert {
+  margin-bottom: 0;
   margin-top: 1rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.carousel-inner {
+  height: 400px;
+}
+
+.carousel-item {
+  height: 100%;
+}
+.carousel-item img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.snacks-container {
+  background-color: lightgray;
+  margin-bottom: 0;
+}
+
+.main-container {
+  padding: 3rem 0;
 }
 
 .snack-col {
@@ -26,7 +63,13 @@ body {
 }
 
 .snack-modal {
-  max-width: 800px;
+  max-width: 900px;
+}
+
+.snack-modal .modal-body {
+  height: 400px;
+  overflow-y: scroll;
+  padding: 1.5rem 2rem;
 }
 
 .snack-modal .col-5 {
@@ -38,9 +81,54 @@ body {
 }
 
 .modal-img {
-  width: 100%;
-  /* height: 300px;
-  margin: -1rem -1rem 1rem -1rem;
+  border-radius: 0.3rem 0 0 0.3rem;
+  height: 100%;
   object-fit: cover;
-  width: calc(100% + 2rem); */
+  width: 100%;
+}
+
+.unauthorized-container {
+  background: url('./assets/unauthorized.jpeg') center/cover;
+  height: 100vh;
+}
+
+.welcome-container {
+  background: url('./assets/welcome.jpg') center/cover;
+  height: 100vh;
+}
+
+.unauthorized-modal, .welcome-modal {
+  width: 350px;
+}
+
+.unauthorized-modal .modal-content .modal-body, .welcome-modal .modal-content .modal-body {
+  padding: 2rem;
+}
+
+.unauthorized-modal .modal-footer, .welcome-modal .modal-footer {
+  justify-content: center;
+}
+
+.jumbotron {
+  border-radius: 0;
+  margin-bottom: 0;
+  padding: 7rem;
+  text-align: center;
+}
+
+.jumbotron.home {
+  background: linear-gradient(rgba(0,0,0, .7), rgba(0,0,0, .4)), url('./assets/background.jpg') top/cover;
+  color: white;
+}
+
+.jumbotron.home-features {
+  background: #1f2327;
+  color: white;
+}
+
+footer {
+  background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0, .5)), url('./assets/background.jpg') bottom/cover;
+  color: white;
+  padding: 2rem;
+  text-align: center;
 }
