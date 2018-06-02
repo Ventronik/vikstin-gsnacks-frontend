@@ -1,7 +1,7 @@
 # Vikstin Federal Penitentiary
 Our cafeteria serves the finest bounty from the lowest bidder.
 
-#### Why can I do right now?
+#### What can I do right now?
 - You can sign up and view snacks we offer.
 - You can see reviews for snacks other people have submitted.
 - You can add reviews as well as edit and delete your own reviews.
