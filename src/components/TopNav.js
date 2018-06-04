@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { userLogout } from '../actions/auth';
 
-class TopNav extends React.Component {
+class Header extends React.Component {
   render () {
     return (
       <div>
@@ -19,7 +19,7 @@ class TopNav extends React.Component {
                 <Nav className="ml-auto" navbar>
                   <NavItem>
                     <NavLink className="nav-link" disabled>Hello, #452{this.props.user.id}</NavLink>
-                  </NavItem>
+                </NavItem>
                   <NavItem>
                     <NavLink className="nav-link" disabled> &bull; </NavLink>
                   </NavItem>
@@ -54,4 +54,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({ userLogout }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopNav);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
