@@ -42,9 +42,7 @@ class Snacks extends React.Component {
   };
 };
 
-const mapStateToProps = state => ({
-  snacks: state.snacks.snacks
-});
+const mapStateToProps = state => ({snacks: state.snacks.snacks});
 
 const mapDispatchToProps = dispatch => ({getSnacks: bindActionCreators(getSnacks, dispatch)});
 
